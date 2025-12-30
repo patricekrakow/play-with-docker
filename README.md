@@ -109,6 +109,10 @@ sudo docker run hello-world
 
 > If you are not using Killercoda, it might interestting to continue the installation with [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall#manage-docker-as-a-non-root-user).
 
+## Introduction
+
+You can now follow the hands-on guide [Develop with containers](https://docs.docker.com/get-started/introduction/develop-with-containers/) and use the workaround from [Let's Play with Killercode](https://github.com/patricekrakow/play-with-killercoda/blob/main/README.md#the-workaround) to expose the HTTP service running just on `localhost` to `0.0.0.0` as required by Killercoda.
+
 ## Reference
 
 - https://docs.docker.com/engine/install/ubuntu/
