@@ -122,6 +122,27 @@ sudo docker run hello-world
 
 You can now follow the hands-on guide [Develop with containers](https://docs.docker.com/get-started/introduction/develop-with-containers/) and use the workaround from [Let's Play with Killercode](https://github.com/patricekrakow/play-with-killercoda/blob/main/README.md#the-workaround) to expose the HTTP service running just on `localhost` to `0.0.0.0` as required by Killercoda.
 
+You can use the following NGINX configuration:
+
+```nginx
+events {
+  worker_connections 768;
+}
+
+http {
+  server {
+    listen 0.0.0.0:8080;
+
+    location / {
+      proxy_pass http://localhost:80/;
+    }
+
+  }
+}
+```
+
+and you will have to (re-)start NGINX as default configuration would have failed because the application from the Docker hands-on guide is already using the port `80`.
+
 ## Reference
 
 - https://docs.docker.com/engine/install/ubuntu/
