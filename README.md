@@ -99,6 +99,15 @@ if not, you can start it with:
 sudo systemctl start docker
 ```
 
+If you get the following error message:
+
+```text
+Job for docker.service failed because the control process exited with error code.
+See "systemctl status docker.service" and "journalctl -xeu docker.service" for details.
+```
+
+just wait a few seconds and retry.
+
 ### Verify the Installation
 
 Finally, you can verify that the installation is successful by running the `hello-world` image:
