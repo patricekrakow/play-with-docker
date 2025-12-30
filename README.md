@@ -27,6 +27,88 @@ source .bashrc
 
 ## Installation
 
+Check the current version of Docker:
+
+```text
+docker --version
+```
+
+### Uninstall old/unofficial version
+
+```text
+sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
+```
+
+### Install using the `apt` repository
+
+#### Add Docker's official GPG key
+
+```text
+sudo apt update
+```
+
+```text
+sudo apt install ca-certificates curl
+```
+
+```text
+sudo install -m 0755 -d /etc/apt/keyrings
+```
+
+```text
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+```
+
+```text
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+```
+
+#### Add the repository to Apt sources:
+
+```text
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+```
+
+```text
+sudo apt update
+```
+
+#### Install the latest Docker packages
+
+```text
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+> You can answer `Y` (Yes) to all the questions ;-)
+
+Check if the Docker deamon is running:
+
+```text
+sudo systemctl status docker
+```
+
+if not, you can start it with:
+
+```text
+sudo systemctl start docker
+```
+
+### Verify the Installation
+
+Finally, you can verify that the installation is successful by running the `hello-world` image:
+
+```text
+sudo docker run hello-world
+```
+
+> If you are not using Killercoda, it might interestting to continue the installation with [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall#manage-docker-as-a-non-root-user).
+
 ## Reference
 
 - https://docs.docker.com/engine/install/ubuntu/
